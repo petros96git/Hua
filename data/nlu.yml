@@ -1,0 +1,226 @@
+version: "3.1"
+
+nlu:
+  - intent: greet
+    examples: |
+      - γεια
+      - γεια σου
+      - καλησπέρα
+      - καλημέρα
+      - hello
+      - hi
+
+  - intent: goodbye
+    examples: |
+      - αντίο
+      - τα λέμε
+      - ciao
+      - bye
+
+  - intent: help
+    examples: |
+      - βοήθεια
+      - τι μπορείς να κάνεις;
+      - τι κάνεις;
+      - τι πληροφορίες μπορείς να παρέχεις;
+
+  - intent: usage
+    examples: |
+      - πως δουλεύεις;
+      - οδηγίες
+      - πώς σε χρησιμοποιώ;
+
+  - intent: thank_you
+    examples: |
+      - ευχαριστώ
+      - σε ευχαριστώ πολύ
+      - thanks
+
+  - intent: bot_challenge
+    examples: |
+      - είσαι ρομπότ;
+      - ποιος είσαι;
+      - είσαι bot;
+
+  - intent: out_of_scope
+    examples: |
+      - πες μου για τον καιρό
+      - αγόρασε μου καφέ
+
+  - intent: unsupported_message
+    examples: |
+      - unsupported message
+      - μη υποστηριζομενο μηνυμα
+
+  # καθηγητες
+  - intent: ask_professors_list
+    examples: |
+      - καθηγητές
+      - ποιοι είναι οι καθηγητές;
+      - λίστα καθηγητών
+      - ονόματα καθηγητών
+      - μπορείς να μου πεις τα ονόματα των καθηγητών;
+
+  - intent: ask_professor_info
+    examples: |
+      - στοιχεία για [Μάρα](professor_name)
+      - δώσε στοιχεία για [Βαρλάμη](professor_name)
+      - πληροφορίες για [Δημοσθένη](professor_name)
+      - [Αναγνωστόπουλος](professor_name)
+      - στοιχεία για τον καθηγητή [Βαρλάμη](professor_name)
+      - ποιος είναι ο [Μιχαήλ](professor_name);
+      - δώσε πληροφορίες για τον [Δημητρακόπουλος](professor_name)
+      - πες μου για την/τον [Νικολαΐδου](professor_name)
+      - ποια είναι η [Μαρα](professor_name)
+      - ποιος είναι ο [βαρλαμης](professor_name)
+      - πληροφορίες για [ΒΑΡΛΑΜΗΣ](professor_name)
+      - ποιος είναι ο [Βαρλάμης](professor_name)
+
+  - intent: ask_professor_email
+    examples: |
+      - email του [Βαρλάμη](professor_name)
+      - ποιο είναι το μέιλ του [Καμαλάκη](professor_name);
+      - δώσε το email της/του [Ριζομυλιώτη](professor_name)
+      - mail [βαρλαμης](professor_name)
+
+  - intent: ask_professor_office
+    examples: |
+      - γραφείο του [Χαραλαμπίδη](professor_name)
+      - που βρίσκεται το γραφείο του [Παπαδόπουλου](professor_name);
+      - γραφειο [βαρλαμης](professor_name)
+
+  - intent: ask_professor_phone
+    examples: |
+      - τηλέφωνο του [Μιχαλακέλη](professor_name)
+      - ποιο είναι το τηλέφωνο του [Βαρλάμη](professor_name)
+      - τηλεφωνο [βαρλαμης](professor_name)
+
+  - intent: ask_professor_website
+    examples: |
+      - ιστοσελίδα του [Ριζομυλιώτη](professor_name)
+      - προσωπική σελίδα του [Μιχαήλ](professor_name)
+      - site [βαρλαμης](professor_name)
+
+  # μαθηματα
+  - intent: ask_course_info_by_code
+    examples: |
+      - πληροφορίες για το μάθημα [ΜΥ01](course_code)
+      - πες μου για το μάθημα [ΥΠ12](course_code)
+      - course [ΕΠ19](course_code)
+      - τι είναι το [επ34](course_code)
+
+  - intent: ask_course_details
+    examples: |
+      - ποιος διδάσκει το [ΜΥ01](course_code);
+      - σε ποιο εξάμηνο είναι το [ΥΠ03](course_code);
+      - ECTS του [ΕΠ19](course_code)
+
+  - intent: ask_courses_by_semester
+    examples: |
+      - μαθήματα [5](semester)ου εξαμήνου
+      - ποια είναι τα μαθήματα στο [3](semester) εξάμηνο;
+      - μαθήματα εξαμήνου [2](semester)
+      - θελω τα μαθηματα του [7](semester)
+
+  - intent: ask_courses_by_professor
+    examples: |
+      - ποια μαθήματα διδάσκει ο [Μιχαήλ](professor_name);
+      - τι διδάσκει ο [Βαρλάμης](professor_name)
+      - μαθηματα [βαρλαμης](professor_name)
+
+  # υπηρεσιες, πλατφορμες
+  - intent: ask_facility_contact_info
+    examples: |
+      - στοιχεία επικοινωνίας της [Γραμματείας](facility_name)
+      - ποιο είναι το τηλέφωνο της [Βιβλιοθήκης](facility_name);
+      - email [Γραμματεία](facility_name)
+
+  - intent: ask_facility_hours
+    examples: |
+      - ωράριο [Βιβλιοθήκη](facility_name)
+      - πότε ανοίγει η [Γραμματεία](facility_name);
+      - λειτουργια [βιβλιοθηκη](facility_name)
+
+  - intent: ask_facility_location
+    examples: |
+      - που βρίσκεται η [Βιβλιοθήκη](facility_name);
+      - διεύθυνση [Γραμματεία](facility_name)
+      - που ειναι η [γραμματεια](facility_name)
+
+  - intent: ask_tutorials_eplatform
+    examples: |
+      - δείξε μου tutorials
+      - οδηγοί για eclass e-studies
+      - tutorials για πλατφόρμες
+
+  - intent: ask_erasmus_office
+    examples: |
+      - στοιχεία επικοινωνίας erasmus
+      - erasmus office
+
+  - intent: ask_services_list
+    examples: |
+      - ποιες υπηρεσίες προσφέρονται στους φοιτητές;
+      - φοιτητικές υπηρεσίες
+      - services για φοιτητές
+
+  - intent: rating
+    examples: |
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - θα σε βαθμολογήσω με 5
+      - σου βάζω 4
+      - μέτριο (3)
+      - πολύ καλό (5)
+
+  - intent: ask_course_info_by_code
+    examples: |
+      - πληροφορίες για το μάθημα [ΜΥ01](course_code)
+      - πες μου λεπτομέρειες για [ΥΠ12](course_code)
+      - θέλω πληροφορίες για [ΕΠ19](course_code)
+      - τι περιλαμβάνει το [ΕΠ34](course_code)
+      - course info για [ΜΥ02](course_code)   
+      
+  # regex και lookup
+  - regex: course_code
+    examples: |
+      - (?i)^[Α-ΩA-Z]{1,3}\d{1,3}$
+
+  - regex: semester
+    examples: |
+      - ^\s*(\d{1,2})(?:ου|ο)?\s*$
+
+  - lookup: facility_name
+    examples: |
+      - Γραμματεία
+      - Βιβλιοθήκη
+      - Erasmus Office
+      - Γραφείο Erasmus
+
+  - lookup: platform_name
+    examples: |
+      - e-Class
+      - e-Studies
+      - Nextcloud
+      - Rocket.Chat
+
+  - lookup: service_name
+    examples: |
+      - Γραμματεία
+      - Βιβλιοθήκη
+      - Erasmus Office
+
+  - lookup: professor_name
+    examples: |
+      - Βαρλάμης
+      - Ηρακλής Βαρλάμης
+      - Μάρα Νικολαΐδου
+      - Γασπαρινάτου
+      - Ριζομυλιώτης
+      - Μιχαήλ
+      - Καμαλάκης
+      - Χαραλαμπίδης
+      - Παπαδόπουλος

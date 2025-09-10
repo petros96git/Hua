@@ -1,0 +1,48 @@
+language: "el"
+
+pipeline:
+  - name: components.preprocess.PreprocessGreekComponent
+
+  - name: WhitespaceTokenizer
+
+  - name: RegexEntityExtractor
+    case_sensitive: false
+    use_regexes: true
+    use_lookup_tables: true
+    use_word_boundaries: false
+
+  - name: RegexFeaturizer
+
+  - name: CountVectorsFeaturizer
+    OOV_token: oov
+    token_pattern: (?u)\b\w+\b
+
+  - name: CountVectorsFeaturizer
+    analyzer: char_wb
+    min_ngram: 3
+    max_ngram: 5
+
+  - name: DIETClassifier
+    epochs: 120
+    constrain_similarities: true
+    entity_recognition: true
+    random_seed: 42
+
+  - name: EntitySynonymMapper
+
+  - name: ResponseSelector
+    epochs: 60
+
+  - name: FallbackClassifier
+    threshold: 0.35
+    ambiguity_threshold: 0.1
+
+policies:
+  - name: RulePolicy
+  - name: MemoizationPolicy
+  - name: TEDPolicy
+    max_history: 5
+    epochs: 40
+    constrain_similarities: true
+
+assistant_id: 20250825-213409-cool-union

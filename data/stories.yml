@@ -1,0 +1,39 @@
+version: "3.1"
+
+stories:
+  - story: greet + help
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: help
+      - action: utter_help
+
+  - story: ask courses by semester
+    steps:
+      - intent: ask_courses_by_semester
+      - action: action_get_courses_per_semester
+
+  - story: ask course details by code
+    steps:
+      - intent: ask_course_details
+      - action: action_get_course_details
+
+  - story: tutorials
+    steps:
+      - intent: ask_tutorials_eplatform
+      - action: action_tutorials_list
+
+  - story: list professors then pick one
+    steps:
+      - intent: ask_professors_list
+      - action: action_list_professors
+      - intent: ask_professor_info
+      - action: action_get_professor_info
+
+  - story: thank + rating
+    steps:
+      - intent: thank_you
+      - action: utter_thank_you_reply
+      - action: utter_ask_rating
+      - intent: rating
+      - action: rating_form

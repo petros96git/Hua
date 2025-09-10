@@ -1,0 +1,127 @@
+version: "3.1"
+
+rules:
+  - rule: greet then help
+    steps:
+      - intent: greet
+      - action: utter_greet
+
+  - rule: handle unsupported message
+    steps:
+      - intent: unsupported_message
+      - action: utter_unsupported_message
+
+  - rule: handle out of scope
+    steps:
+      - intent: out_of_scope
+      - action: utter_out_of_scope
+
+  - rule: save rating
+    steps:
+      - intent: rating
+      - action: rating_form
+
+  - rule: services list
+    steps:
+      - intent: ask_services_list
+      - action: utter_services_list
+
+  # καθηγητές
+  - rule: list professors
+    steps:
+      - intent: ask_professors_list
+      - action: action_list_professors
+
+  - rule: professor info
+    steps:
+      - intent: ask_professor_info
+      - action: action_get_professor_info
+
+  - rule: professor email
+    steps:
+      - intent: ask_professor_email
+      - action: action_get_professor_email
+
+  - rule: professor office
+    steps:
+      - intent: ask_professor_office
+      - action: action_get_professor_office
+
+  - rule: professor phone
+    steps:
+      - intent: ask_professor_phone
+      - action: action_get_professor_phone
+
+  - rule: professor website
+    steps:
+      - intent: ask_professor_website
+      - action: action_get_professor_website
+
+  - rule: courses by professor
+    steps:
+      - intent: ask_courses_by_professor
+      - action: action_get_courses_by_professor
+
+  # μαθήματα
+  - rule: courses by semester
+    steps:
+      - intent: ask_courses_by_semester
+      - action: action_get_courses_per_semester
+
+  - rule: course details by code
+    steps:
+      - intent: ask_course_details
+      - action: action_get_course_details
+
+  - rule: course info by code (map το "ask_course_info_by_code")
+    steps:
+      - intent: ask_course_info_by_code
+      - action: action_get_course_details
+
+  # υπηρεσίες
+  - rule: facility hours
+    steps:
+      - intent: ask_facility_hours
+      - action: action_get_facility_working_hours
+
+  - rule: facility contact
+    steps:
+      - intent: ask_facility_contact_info
+      - action: action_get_facility_contact_info
+
+  - rule: facility location
+    steps:
+      - intent: ask_facility_location
+      - action: action_get_facility_location
+
+  # πλατφόρμες / tutorials
+  - rule: e-platform tutorials
+    steps:
+      - intent: ask_tutorials_eplatform
+      - action: action_tutorials_list
+
+  # erasmus
+  - rule: erasmus office
+    steps:
+      - intent: ask_erasmus_office
+      - action: action_get_erasmus_application_info
+
+  - rule: help
+    steps:
+      - intent: help
+      - action: utter_help
+
+  - rule: usage
+    steps:
+      - intent: usage
+      - action: utter_usage
+
+  - rule: bot challenge
+    steps:
+      - intent: bot_challenge
+      - action: utter_bot_challenge
+
+  - rule: goodbye
+    steps:
+      - intent: goodbye
+      - action: utter_goodbye

@@ -1,0 +1,181 @@
+version: "3.1"
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+
+intents:
+  - greet
+  - goodbye
+  - help
+  - usage
+  - thank_you
+  - bot_challenge
+  - out_of_scope
+  - unsupported_message
+  # καθηγητες
+  - ask_professors_list
+  - ask_professor_info
+  - ask_professor_email
+  - ask_professor_office
+  - ask_professor_phone
+  - ask_professor_website
+  # μαθηματα
+  - ask_course_info_by_code
+  - ask_course_details
+  - ask_courses_by_semester
+  - ask_courses_by_professor
+  # υπηρεσιες/πλατφορμες
+  - ask_facility_contact_info
+  - ask_facility_hours
+  - ask_facility_location
+  - ask_tutorials_eplatform
+  - ask_erasmus_office
+  - ask_services_list
+  # feedback
+  - rating
+
+entities:
+  - professor_name
+  - course_code
+  - semester
+  - facility_name
+  - email
+  - platform_name
+  - service_name
+
+slots:
+  professor_name:
+      type: text
+      influence_conversation: true
+      mappings:
+        - type: from_entity
+          entity: professor_name
+        - type: from_text
+          conditions:
+            - active_loop: null
+
+  course_code:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: course_code
+
+  semester:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: semester
+
+  facility_name:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: facility_name
+
+  platform_name:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: platform_name
+
+  service_name:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: service_name
+
+  email:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: email
+
+  rating:
+    type: categorical
+    values:
+      - excellent
+      - mediocre
+      - bad
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: rating
+
+responses:
+  utter_greet:
+    - text: "Γεια σου! Είμαι ο **huahelper**. Πώς μπορώ να βοηθήσω;"
+  utter_goodbye:
+    - text: "Τα λέμε! 👋"
+  utter_help:
+    - text: |
+        Μπορώ να σε βοηθήσω με:
+        • μαθήματα (κωδικός/εξάμηνο)
+        • στοιχεία καθηγητών (email, γραφείο, τηλέφωνο, σελίδα)
+        • υπηρεσίες/υποδομές (επικοινωνία, ωράριο, τοποθεσία)
+        • ηλεκτρονικές πλατφόρμες (σύνδεσμος, οδηγοί)
+        • στοιχεία επικοινωνίας Τμήματος & Γραμματειών
+        Γράψε π.χ. «Μαθήματα 5ου εξαμήνου» ή «Email Βαρλάμης».
+  utter_usage:
+    - text: "Στείλε «βοήθεια» για παραδείγματα ή ρώτα ελεύθερα!"
+  utter_thank_you_reply:
+    - text: "Χάρηκα που βοήθησα! 😊"
+  utter_out_of_scope:
+    - text: "Χμμ, αυτό ξεφεύγει από αυτά που ξέρω. Μπορείς να ρωτήσεις για μαθήματα, καθηγητές και υπηρεσίες."
+  utter_unsupported_message:
+    - text: "Δεν υποστηρίζω ακόμη τα μηνύματα χωρίς κείμενο (εικόνες/βίντεο κ.λπ.). Δοκίμασε να γράψεις την ερώτησή σου."
+  utter_bot_challenge:
+    - text: "Είμαι ο huahelper, bot για το Τμήμα Πληροφορικής & Τηλεματικής 😄"
+  utter_ask_rating:
+    - text: "Πώς θα αξιολογούσες την εμπειρία σου;"
+      buttons:
+        - title: "Τέλεια"
+          payload: '/rating{"rating":"excellent"}'
+        - title: "Μέτρια"
+          payload: '/rating{"rating":"mediocre"}'
+        - title: "Κακή"
+          payload: '/rating{"rating":"bad"}'
+  utter_services_list:
+    - text: |
+        Βασικές υπηρεσίες φοιτητών:
+        • Γραμματεία (επικοινωνία, δικαιολογητικά)
+        • Βιβλιοθήκη (δανεισμός, ωράριο, χώροι μελέτης)
+        • e-Class / e-Studies / Nextcloud / Rocket.Chat
+        • Erasmus Office
+        Ρώτησε για επικοινωνία, τοποθεσία ή ώρες λειτουργίας.
+
+actions:
+  # καθηγητες
+  - action_get_professor_info
+  - action_get_professor_info_from_email
+  - action_get_professor_email
+  - action_get_professor_office
+  - action_get_professor_phone
+  - action_get_professor_website
+  - action_list_professors
+  - action_get_courses_by_professor
+  # μαθηματα
+  - action_list_all_courses
+  - action_get_courses_per_semester
+  - action_get_course_details
+  - action_get_course_info
+  # υπηρεσιες
+  - action_get_facility_working_hours
+  - action_get_facility_contact_info
+  - action_get_facility_location
+  - action_list_student_services
+  - action_get_student_service
+  - action_list_eplatforms
+  - action_get_eplatform
+  - action_get_department_contacts
+  - action_tutorials_list
+  - action_get_erasmus_application_info
+  # αλλα
+  - action_default_fallback
+  - rating_form
